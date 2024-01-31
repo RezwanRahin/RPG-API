@@ -17,5 +17,11 @@ namespace RPG.Controllers
 		{
 			return Ok(characters);
 		}
+
+		[HttpGet]
+		public ActionResult<Character> GetSingle()
+		{
+			return Ok(characters[0]);
+		}
 	}
 }
