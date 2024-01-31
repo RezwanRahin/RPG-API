@@ -11,5 +11,11 @@ namespace RPG.Controllers
 			new Character(),
 			new Character { Name = "Sam" }
 		};
+
+		[HttpGet]
+		public ActionResult<List<Character>> Get()
+		{
+			return Ok(characters);
+		}
 	}
 }
