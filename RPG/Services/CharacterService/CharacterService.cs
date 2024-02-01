@@ -11,7 +11,8 @@ namespace RPG.Services.CharacterService
 
 		public List<Character> AddCharacter(Character newCharacter)
 		{
-			throw new NotImplementedException();
+			characters.Add(newCharacter);
+			return characters;
 		}
 
 		public List<Character> GetAllCharacters()
