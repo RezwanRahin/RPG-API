@@ -30,8 +30,7 @@ namespace RPG.Controllers
 		[HttpPost]
 		public ActionResult<List<Character>> AddCharacter(Character newCharacter)
 		{
-			characters.Add(newCharacter);
-			return Ok(characters);
+			return Ok(_characterService.AddCharacter(newCharacter));
 		}
 	}
 }
