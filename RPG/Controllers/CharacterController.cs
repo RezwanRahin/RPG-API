@@ -24,7 +24,7 @@ namespace RPG.Controllers
 		[HttpGet("{id}")]
 		public ActionResult<Character> GetSingle(int id)
 		{
-			return Ok(characters.FirstOrDefault(c => c.Id == id));
+			return Ok(_characterService.GetCharacterById(id));
 		}
 
 		[HttpPost]
