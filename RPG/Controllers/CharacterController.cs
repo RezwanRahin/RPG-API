@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RPG.Models;
+using RPG.Services.CharacterService;
 
 namespace RPG.Controllers
 {
@@ -11,6 +12,12 @@ namespace RPG.Controllers
 			new Character(),
 			new Character { Id = 1, Name = "Sam" }
 		};
+		private readonly ICharacterService _characterService;
+
+		public CharacterController(ICharacterService characterService)
+		{
+			_characterService = characterService;
+		}
 
 		[HttpGet("GetAll")]
 		public ActionResult<List<Character>> Get()
