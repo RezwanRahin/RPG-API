@@ -18,7 +18,7 @@ namespace RPG.Controllers
 		[HttpGet("GetAll")]
 		public ActionResult<List<Character>> Get()
 		{
-			return Ok(characters);
+			return Ok(_characterService.GetAllCharacters());
 		}
 
 		[HttpGet("{id}")]
