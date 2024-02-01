@@ -22,7 +22,7 @@ namespace RPG.Services.CharacterService
 
 		public Character GetCharacterById(int id)
 		{
-			throw new NotImplementedException();
+			return characters.FirstOrDefault(c => c.Id == id);
 		}
 	}
 }
