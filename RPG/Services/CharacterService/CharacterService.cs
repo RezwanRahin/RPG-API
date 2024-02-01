@@ -17,9 +17,11 @@ namespace RPG.Services.CharacterService
 			return serviceResponse;
 		}
 
-		public async Task<List<Character>> GetAllCharacters()
+		public async Task<ServiceResponse<List<Character>>> GetAllCharacters()
 		{
-			return characters;
+			var serviceResponse = new ServiceResponse<List<Character>>();
+			serviceResponse.Data = characters;
+			return serviceResponse;
 		}
 
 		public async Task<Character> GetCharacterById(int id)
