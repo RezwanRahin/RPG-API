@@ -17,7 +17,7 @@ namespace RPG.Services.CharacterService
 
 		public List<Character> GetAllCharacters()
 		{
-			throw new NotImplementedException();
+			return characters;
 		}
 
 		public Character GetCharacterById(int id)
