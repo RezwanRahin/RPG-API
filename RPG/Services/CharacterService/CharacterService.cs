@@ -1,3 +1,4 @@
+using AutoMapper;
 using RPG.Models;
 
 namespace RPG.Services.CharacterService
@@ -8,6 +9,13 @@ namespace RPG.Services.CharacterService
 			new Character(),
 			new Character { Id = 1, Name = "Sam" }
 		};
+
+		private readonly IMapper _mapper;
+
+		public CharacterService(IMapper mapper)
+		{
+			_mapper = mapper;
+		}
 
 		public async Task<ServiceResponse<List<Character>>> AddCharacter(Character newCharacter)
 		{
