@@ -8,10 +8,6 @@ namespace RPG.Controllers
 	[Route("api/[controller]")]
 	public class CharacterController : ControllerBase
 	{
-		private static List<Character> characters = new List<Character> {
-			new Character(),
-			new Character { Id = 1, Name = "Sam" }
-		};
 		private readonly ICharacterService _characterService;
 
 		public CharacterController(ICharacterService characterService)
