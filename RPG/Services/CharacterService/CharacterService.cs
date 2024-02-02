@@ -28,10 +28,10 @@ namespace RPG.Services.CharacterService
 			return serviceResponse;
 		}
 
-		public async Task<ServiceResponse<List<Character>>> GetAllCharacters()
+		public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
 		{
-			var serviceResponse = new ServiceResponse<List<Character>>();
-			serviceResponse.Data = characters;
+			var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
+			serviceResponse.Data = characters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToList();
 			return serviceResponse;
 		}
 
