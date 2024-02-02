@@ -35,11 +35,11 @@ namespace RPG.Services.CharacterService
 			return serviceResponse;
 		}
 
-		public async Task<ServiceResponse<Character>> GetCharacterById(int id)
+		public async Task<ServiceResponse<GetCharacterDto>> GetCharacterById(int id)
 		{
-			var serviceResponse = new ServiceResponse<Character>();
+			var serviceResponse = new ServiceResponse<GetCharacterDto>();
 			var character = characters.FirstOrDefault(c => c.Id == id);
-			serviceResponse.Data = character;
+			serviceResponse.Data = _mapper.Map<GetCharacterDto>(character);
 			return serviceResponse;
 		}
 	}
