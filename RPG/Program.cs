@@ -1,8 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using RPG.Data;
 using RPG.Services.CharacterService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Register DbContext
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
