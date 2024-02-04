@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RPG.Data;
 using RPG.Dtos.Character;
 using RPG.Models;
@@ -57,7 +58,8 @@ namespace RPG.Services.CharacterService
 		public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
 		{
 			var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
-			serviceResponse.Data = characters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToList();
+			var dbCharacters = await _context.Characters.ToListAsync();
+			serviceResponse.Data = dbCharacters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToList();
 			return serviceResponse;
 		}
 
