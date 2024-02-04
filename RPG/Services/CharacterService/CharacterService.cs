@@ -1,4 +1,5 @@
 using AutoMapper;
+using RPG.Data;
 using RPG.Dtos.Character;
 using RPG.Models;
 
@@ -12,9 +13,11 @@ namespace RPG.Services.CharacterService
 		};
 
 		private readonly IMapper _mapper;
+		private readonly DataContext _context;
 
-		public CharacterService(IMapper mapper)
+		public CharacterService(IMapper mapper, DataContext context)
 		{
+			_context = context;
 			_mapper = mapper;
 		}
 
