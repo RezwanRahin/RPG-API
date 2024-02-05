@@ -8,11 +8,6 @@ namespace RPG.Services.CharacterService
 {
 	public class CharacterService : ICharacterService
 	{
-		private static List<Character> characters = new List<Character> {
-			new Character(),
-			new Character { Id = 1, Name = "Sam" }
-		};
-
 		private readonly IMapper _mapper;
 		private readonly DataContext _context;
 
