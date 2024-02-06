@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using RPG.Models;
 
 namespace RPG.Data
@@ -30,9 +31,13 @@ namespace RPG.Data
 			return response;
 		}
 
-		public Task<bool> UserExists(string username)
+		public async Task<bool> UserExists(string username)
 		{
-			throw new NotImplementedException();
+			if (await _context.Users.AnyAsync(u => u.Username.ToLower() == username.ToLower()))
+			{
+				return true;
+			}
+			return false;
 		}
 
 		private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
