@@ -6,10 +6,12 @@ namespace RPG.Data
 	public class AuthRepository : IAuthRepository
 	{
 		private readonly DataContext _context;
+		private readonly IConfiguration _configuration;
 
-		public AuthRepository(DataContext context)
+		public AuthRepository(DataContext context, IConfiguration configuration)
 		{
 			_context = context;
+			_configuration = configuration;
 		}
 
 		public async Task<ServiceResponse<string>> Login(string username, string password)
