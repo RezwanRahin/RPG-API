@@ -10,9 +10,11 @@ namespace RPG.Services.CharacterService
 	{
 		private readonly IMapper _mapper;
 		private readonly DataContext _context;
+		private readonly IHttpContextAccessor _httpContextAccessor;
 
-		public CharacterService(IMapper mapper, DataContext context)
+		public CharacterService(IMapper mapper, DataContext context, IHttpContextAccessor httpContextAccessor)
 		{
+			_httpContextAccessor = httpContextAccessor;
 			_context = context;
 			_mapper = mapper;
 		}
