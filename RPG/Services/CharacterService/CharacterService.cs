@@ -45,7 +45,7 @@ namespace RPG.Services.CharacterService
 
 			try
 			{
-				var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == id);
+				var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
 				if (character is null)
 					throw new Exception($"Character with Id '{id}' not found.");
 
@@ -53,7 +53,10 @@ namespace RPG.Services.CharacterService
 
 				await _context.SaveChangesAsync();
 
-				serviceResponse.Data = await _context.Characters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToListAsync();
+				serviceResponse.Data = await _context.Characters
+											.Where(c => c.User!.Id == GetUserId())
+											.Select(c => _mapper.Map<GetCharacterDto>(c))
+											.ToListAsync();
 			}
 			catch (Exception ex)
 			{
